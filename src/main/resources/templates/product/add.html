@@ -1,0 +1,18 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:insert="header :: header"></div>
+<div>
+    <form method="post" th:action="@{/product/add}" th:object="${product}">
+        <input type="hidden" th:field="*{id}" />
+        <input type="text" name="name" placeholder="Название" th:field="*{name}"/>
+        <input type="text" name="description" placeholder="Описание" th:field="*{description}"/>
+        <input type="text" name="price" placeholder="Цена" th:field="*{price}">
+        <select name="producer" th:field="*{producer}">
+            <option th:each="producer : ${producers}" th:value="${producer.id}" th:text="${producer.name}" ></option>
+        </select>
+
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+</body>
+</html>

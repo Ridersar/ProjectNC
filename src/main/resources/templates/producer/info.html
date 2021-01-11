@@ -1,0 +1,25 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<boby>
+    <div th:insert="header :: header"></div>
+    <form sec:authorize="hasAuthority('ADMIN')" method="post" th:action="@{/producer/{id}/delete/(id=${producer.id})}">
+        <button type="submit">Удалить производителя</button>
+    </form>
+    <form sec:authorize="hasAuthority('ADMIN')" method="get" th:action="@{/producer/{id}/edit/(id=${producer.id})}">
+        <button type="submit">Изменить производителя</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Описание</th>
+        </tr>
+        <tr th:each="producer : ${producer}">
+            <td th:text="${producer.id}"></td>
+            <td th:text="${producer.name}"></td>
+            <td th:text="${producer.description}"></td>
+        </tr>
+    </table>
+</boby>
+</html>

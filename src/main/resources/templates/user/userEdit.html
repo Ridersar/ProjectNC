@@ -1,0 +1,19 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+Редактирование пользователя
+<div>
+    <form method="post" th:action="@{/user/{id}/(id=${user.id})}" th:object="${form}">
+        <input type="text" name="username" th:value="${user.username}"/>
+<!--        <input type="text" th:name="username" id="username"/>-->
+
+        <input type="hidden" name="userId" th:value="${user.id}"/>
+        <div>
+        <label th:each="role : ${roles}">
+            <input type="checkbox" th:name="${role}" th:checked="${#sets.contains(user.roles, role)} ? checked" th:value="${role}" th:text="${role}">
+        </label>
+        </div>
+        <button type="submit">Сохранить</button>
+    </form>
+</div>
+</body>
+</html>

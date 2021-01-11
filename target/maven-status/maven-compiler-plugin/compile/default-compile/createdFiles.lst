@@ -1,0 +1,4 @@
+com\example\shop\GreetingController.class
+com\example\shop\domain\Product.class
+com\example\shop\repos\ProductRepository.class
+com\example\shop\Application.class

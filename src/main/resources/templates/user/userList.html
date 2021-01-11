@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<boby>
+    <div th:insert="header :: header"></div>
+    <table>
+        <tr>
+            <th>Имя пользователя</th>
+            <th>Роли</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.roles}"></td>
+            <td><a th:href="@{/user/{id}/(id=${user.id})}">Edit</a></td>
+        </tr>
+    </table>
+</boby>
+</html>

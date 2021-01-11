@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+<header th:fragment="header">
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+    <div sec:authorize="hasAuthority('ADMIN')">
+    <span><a href="/user">Список пользователей</a></span>
+    </div>
+    <div id="nav">
+        <li><a href="/product">Товары</a></li>
+        <li><a href="/producer">Производители</a></li>
+    </div>
+</header>
+</body>
+</html>

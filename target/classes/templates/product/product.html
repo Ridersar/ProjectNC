@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<boby>
+    <div th:insert="header :: header"></div>
+    <a sec:authorize="hasAuthority('ADMIN')" href="/product/add">Добавить товар</a>
+    <div>Список товаров</div>
+    <form method="post" th:action="@{/product/filter}">
+        <input type="text" name="filter">
+        <button type="submit">Найти</button>
+    </form>
+
+    <form method="post" th:action="@{/product/sort/(value=id)}">
+        <button type="submit">Сортировка по id</button>
+    </form>
+    <form method="post" th:action="@{/product/sort/(value=name)}">
+        <button type="submit">Сортировка по названию</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Описание</th>
+            <th>Цена</th>
+            <th>Производитель</th>
+        </tr>
+        <tr th:each="product : ${products}">
+            <td><a th:href="@{/product/{id}/(id=${product.id})}" th:text="${product.id}"/></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.description}"></td>
+            <td th:text="${product.price} ? ${product.price} : '-'"></td>
+            <td th:text="${product.producer} ? ${product.producer.name} : 'Не определен'"></td>
+        </tr>
+    </table>
+</boby>
+</html>
