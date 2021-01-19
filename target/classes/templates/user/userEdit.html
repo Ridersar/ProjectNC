@@ -1,18 +1,29 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      th:include="structure :: structure">
 <body>
-Редактирование пользователя
-<div>
+<div th:fragment="content">
+    <div class="mb-4"><h5>Редактирование пользователя</h5></div>
     <form method="post" th:action="@{/user/{id}/(id=${user.id})}" th:object="${form}">
-        <input type="text" name="username" th:value="${user.username}"/>
-<!--        <input type="text" th:name="username" id="username"/>-->
 
-        <input type="hidden" name="userId" th:value="${user.id}"/>
-        <div>
-        <label th:each="role : ${roles}">
-            <input type="checkbox" th:name="${role}" th:checked="${#sets.contains(user.roles, role)} ? checked" th:value="${role}" th:text="${role}">
-        </label>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Имя пользователя : </label>
+            <div class="col-sm-6">
+                <input type="text" name="username" class="form-control" placeholder="Имя пользователя" th:value="${user.username}" />
+            </div>
         </div>
-        <button type="submit">Сохранить</button>
+        <input type="hidden" name="userId" th:value="${user.id}"/>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Роли : </label>
+            <div class="col-sm-6">
+                <label class="mr-3" th:each="role : ${roles}">
+                    <input class="mr-1" type="checkbox" th:name=" ${role}" th:checked="${#sets.contains(user.roles, role)} ? checked"
+                           th:value="${role}" th:text="${role}">
+                </label>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-primary" type="submit" value="Save">Сохранить</button>
+        </div>
     </form>
 </div>
 </body>

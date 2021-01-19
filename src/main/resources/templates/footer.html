@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:include="structure :: structure">
 <body>
+<div th:fragment="content">
 <footer th:fragment="footer">
     <p>&copy; 2021 Akchurin Artyom</p>
 </footer>
+</div>
 </body>
 </html>

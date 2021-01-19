@@ -20,7 +20,7 @@ import java.util.Map;
 public class ProductController {
     private final ProductRepository productRepository;
     private final ProducerRepository producerRepository;
-    private boolean flagSortName = true;
+    private boolean flagSortName = false;
 
     @Autowired
     public ProductController(ProductRepository productRepository, ProducerRepository producerRepository) {

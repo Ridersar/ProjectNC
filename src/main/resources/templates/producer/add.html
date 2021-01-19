@@ -1,12 +1,24 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      th:include="structure :: structure">
 <body>
-<div th:insert="header :: header"></div>
-<div>
+<div th:fragment="content">
     <form method="post" th:action="@{/producer/add}" th:object="${producer}">
-        <input type="hidden" th:field="*{id}" />
-        <input type="text" name="name" placeholder="Название" th:field="*{name}"/>
-        <input type="text" name="description" placeholder="Описание" th:field="*{description}"/>
-        <button type="submit">Добавить</button>
+        <div class="form-row">
+            <input type="hidden" th:field="*{id}" />
+            <div class="form-group col-md-2">
+                <label>Название</label>
+                <input class="form-control" type="text" name="name" placeholder="Название" th:field="*{name}"/>
+            </div>
+            <div class="form-group col-md-5">
+                <label>Описание</label>
+                <input class="form-control" type="text" name="description" placeholder="Описание" th:field="*{description}"/>
+            </div>
+
+            <div class="form-group col-md-2">
+                <label></label>
+                <button type="submit" class="btn btn-primary ml-2 form-control">Добавить</button>
+            </div>
+        </div>
     </form>
 </div>
 </body>

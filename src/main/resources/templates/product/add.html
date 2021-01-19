@@ -1,17 +1,35 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      th:include="structure :: structure">
 <body>
-<div th:insert="header :: header"></div>
-<div>
+<div th:fragment="content">
     <form method="post" th:action="@{/product/add}" th:object="${product}">
+        <div class="form-row">
         <input type="hidden" th:field="*{id}" />
-        <input type="text" name="name" placeholder="Название" th:field="*{name}"/>
-        <input type="text" name="description" placeholder="Описание" th:field="*{description}"/>
-        <input type="text" name="price" placeholder="Цена" th:field="*{price}">
-        <select name="producer" th:field="*{producer}">
-            <option th:each="producer : ${producers}" th:value="${producer.id}" th:text="${producer.name}" ></option>
-        </select>
+        <div class="form-group col-md-2">
+            <label>Название</label>
+            <input class="form-control" type="text" name="name" placeholder="Название" th:field="*{name}"/>
+        </div>
+        <div class="form-group col-md-5">
+            <label>Описание</label>
+            <input class="form-control" type="text" name="description" placeholder="Описание" th:field="*{description}"/>
+        </div>
+        <div class="form-group col-md-1">
+            <label>Цена</label>
+            <input class="form-control" type="text" name="price" placeholder="Цена" th:field="*{price}">
+        </div>
 
-        <button type="submit">Добавить</button>
+        <div class="form-group col">
+            <label>Производитель</label>
+            <select name="producer" th:field="*{producer}">
+                <option class="form-control" th:each="producer : ${producers}" th:value="${producer.id}" th:text="${producer.name}" ></option>
+            </select>
+        </div>
+
+        <div class="form-group col-md-2">
+            <label></label>
+            <button type="submit" class="btn btn-primary ml-2 form-control">Добавить</button>
+        </div>
+        </div>
     </form>
 </div>
 </body>

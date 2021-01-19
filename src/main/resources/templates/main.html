@@ -1,6 +1,13 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en"
+      th:include="structure :: structure">
 <body>
-<div th:insert="header :: header"></div>
-<div th:insert="footer :: footer"></div>
+<div th:fragment="content">
+
+    <div th:insert="header :: header"></div>
+    <div th:insert="footer :: footer"></div>
+
+</div>
 </body>
 </html>
